@@ -1,7 +1,6 @@
 import { render, screen, fireEvent } from '@testing-library/react';
 import GoogleLoginButton from '../GoogleLoginButton';
 import { signIn } from 'next-auth/react';
-import '@testing-library/jest-dom';
 
 // Mock next-auth
 jest.mock('next-auth/react', () => ({
@@ -11,7 +10,8 @@ jest.mock('next-auth/react', () => ({
 // Mock next/image
 jest.mock('next/image', () => ({
   __esModule: true,
-  default: (props: any) => <img {...props} />,
+  // eslint-disable-next-line jsx-a11y/alt-text, @next/next/no-img-element
+  default: (props: React.ComponentProps<'img'>) => <img {...props} />,
 }));
 
 describe('GoogleLoginButton', () => {
