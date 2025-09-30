@@ -13,8 +13,8 @@
   "dependencies": {
     "next": "15.0.1",
     "next-auth": "^4.24.10",
-    "react": "19.0.0-rc-69d4b800-20241021",
-    "react-dom": "19.0.0-rc-69d4b800-20241021"
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0"
   },
   "devDependencies": {
     "@testing-library/dom": "^10.4.0",
