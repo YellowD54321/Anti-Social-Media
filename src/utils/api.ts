@@ -4,11 +4,20 @@ import axios, { AxiosError } from 'axios';
  * API utility functions for the application
  */
 
+// API Base URL - 可透過環境變數設定
+const API_BASE_URL =
+  process.env.NEXT_PUBLIC_API_BASE_URL || 'http://127.0.0.1:3000';
+
 export interface QuitItTodayResponse {
   success: boolean;
   message: string;
   timestamp?: string;
   error?: string;
+}
+
+export interface QuitItTodayRequest {
+  userId: string;
+  socialMediaType: string;
 }
 
 /**
@@ -17,9 +26,15 @@ export interface QuitItTodayResponse {
  */
 export async function postQuitItToday(): Promise<QuitItTodayResponse> {
   try {
+    // 現階段使用固定值
+    const requestData: QuitItTodayRequest = {
+      userId: 'test0001',
+      socialMediaType: 'Facebook',
+    };
+
     const response = await axios.post<QuitItTodayResponse>(
-      '/api/quit-it-today',
-      {},
+      `${API_BASE_URL}/quitItToday`,
+      requestData,
       {
         headers: {
           'Content-Type': 'application/json',
